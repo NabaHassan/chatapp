@@ -91,7 +91,6 @@ class _GroupPageState extends State<GroupPage> {
     final ownMsg = {
       "msg": msg.trim(),
       "senderName": widget.name,
-      "type": "ownMsg",
       "time": _formatTime(DateTime.now())
     };
 
@@ -105,8 +104,8 @@ class _GroupPageState extends State<GroupPage> {
   }
 
   Widget _buildBubble(Map<String, dynamic> msg) {
-    final mine = msg["type"] == "ownMsg";
     final sender = msg['senderName'] ?? 'Unknown';
+    final mine = sender == widget.name;
     final time = msg['time'] ?? '';
 
     final radius = Radius.circular(16);
